@@ -23,7 +23,7 @@ form{
 form > div{
 	margin: 1.5em;
 }
-input[type="submit"]{
+input[type="button"]{
 
 	width: 15%;
 	margin: 1.5em auto;
@@ -34,7 +34,7 @@ input{
 }
 
 
-input[type="submit"]:hover {
+input[type="button"]:hover {
 
 	background: red;
 }

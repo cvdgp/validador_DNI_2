@@ -22,16 +22,18 @@ A parte, si quieres ser más riguroso, hay una formula para saber si el numero e
 Se divide el numero entre 23 y si el resto coincide con la posición de la letra del documento en la lista TRWAGMYFPDXBNJZSQVHLCKE entonces es valido.
 
 */
+
+
 let btnEnviar 		= document.getElementById("Enviar");
-let txtDni 			= document.getElementById("dni");
 let txtNombre		= document.getElementById("nombre");
 let txtApelido1 	= document.getElementById("apellido1");
-let txtApelido1 	= document.getElementById("apellido1");
-let txtApellido2 	= document.getElementById("apellido2");
+let txtApellido2 	= document.getElementById("apellido2");  
+let txtDni 			= document.getElementById("dni");
+
 
 btnEnviar.addEventListener("click",function(){
- alert("has hecho submit tarugo");				
-})
+		alert(`los datos enviado son los siguiente :    Nombre ${txtNombre.value} el apellido primero  es ${txtApelido1.value}`);	
+}); 
 
 function Validador(){
 
@@ -85,12 +87,12 @@ function Validador(){
 	console.log("longitud Documento ==>  " + DocumentLength);
 	console.log("Ultima letra ==>    " + lastChart);
 	console.log(" Número Dni  ==>   " + numeroDni);
-	console.log("ketra inicial NIE ==>   " + letraInicialNie);
-	console.log("digito control dni ==>   " + digitoControl);
+	console.log("letra inicial NIE ==>   " + letraInicialNie);
+	console.log("dígito control dni ==>   " + digitoControl);
 	console.log("letra correcta es =====>  " + KEY.charAt(numeroDni % 23));
 
 	console.groupEnd();
 
 
 
-}
+};
