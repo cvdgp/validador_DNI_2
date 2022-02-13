@@ -22,7 +22,7 @@ A parte, si quieres ser más riguroso, hay una formula para saber si el numero e
 Se divide el numero entre 23 y si el resto coincide con la posicion de la letra del documento en la lista TRWAGMYFPDXBNJZSQVHLCKE entonces es valido.
 
 */
-
+let documento = document.getElementById("docuemnto");
 let KEY = "TRWAGMYFPDXBNJZSQVHLCKE";
 let documento =  prompt("número documento");
 /*pasmos el dato a string con la letra mayuscula*/
@@ -32,36 +32,49 @@ let DocumentLength = documento.length;
 let lastChart = documento.slice(8,9);
 let numeroDni = parseInt(documento.slice(0,8));
 let letraInicialNie = documento.slice(0,1);
+let tipodocumento = "DNI";
 
-
-/*forzamos para q la ultima letra sea mayuscula*/
+/*forzamos para q la ultima y la primera y la combertimos en string letra sea mayuscula*/
 lastChart = 		lastChart.toString().toUpperCase();
 letraInicialNie = 	letraInicialNie.toString().toUpperCase();
 
 /*Se divide el numero entre 23 y si el resto coincide con la posicion de la letra del documento en la lista TRWAGMYFPDXBNJZSQVHLCKE entonces es valido */
 let digitoControl =  (lastChart === KEY.charAt(numeroDni % 23) );
 
-/*Evalua que primera letra del NIE una de las siguientes: XYZ*/
-let controlPrimerLetraNie = (letraInicialNie === "Y" || letraInicialNie === "X"  || letraInicialNie === "Z");
+/*Evalua que primera letra del NIE una de las siguientes: XYZ en tal caso será un NIE en caso contrario es un DNI*/
+if(letraInicialNie === "Y" || letraInicialNie === "X"  || letraInicialNie === "Z") 
+			tipodocumento = "NIE";
 
-/*Valora si es un DNI o NIE*/
+
+
+
 
 
 
 /*si 
 1. el digito control es verdadero y 
 2. son 9 digitos
-
+3. La primera letra del Nie es uno de "XYZ"
 */
 
-console.group();
+if(tipodocumento === "NIE"){
+	numeroDni = documento.slice(1,7);
+	digitoControl =  (lastChart === KEY.charAt(numeroDni % 23) );
+	console.log("NIEEEEEEEEEEE");
 
+}if(tipodocumento === "DNI" && digitoControl === true  && DocumentLength === 9 ){
+
+console.log("ES un dni correcto")
+}
+
+console.group();
+console.log("tipo documento  ==>  " + tipodocumento );
 console.log("longitud Documento ==>  " + DocumentLength);
 console.log("Ultima letra ==>    " + lastChart);
 console.log(" Número Dni  ==>   " + numeroDni);
 console.log("ketra inicial NIE ==>   " + letraInicialNie);
 console.log("digito control dni ==>   " + digitoControl);
-console.log("digito control primera letra NIE ==>   " + controlPrimerLetraNie);
+console.log("letra correcta es =====>  " + KEY.charAt(numeroDni % 23));
 
 console.groupEnd();
 
