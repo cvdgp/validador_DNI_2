@@ -21,10 +21,33 @@ A parte, si quieres ser más riguroso, hay una formula para saber si el numero e
 
 Se divide el numero entre 23 y si el resto coincide con la posicion de la letra del documento en la lista TRWAGMYFPDXBNJZSQVHLCKE entonces es valido.
 
+
+Hay que tener en cuenta que, en el caso de un NIE de extranjero residente en España, este cuenta con una letra (X, Y o Z), siete números y dígito de control. En este caso para hacer el cálculo vamos a tener que hacer la siguiente sustitución de letras por números:
+
+X – 0
+Y – 1
+Z – 2
 */
 
+// absorcion de datos //
+let txtNombre =     document.getElementById("nombre"),
+txtApellido1 =      document.getElementById("apellido1"),
+txtApellido2 =      document.getElementById("apellido2"),
+txtDni =            document.getElementById("docuemnto"),
+btnDocumento =      document.getElementById("Enviar");
+
+
+btnDocumento.addEventListener("click", function(){
+    alert(`Datos formulario:
+    ${txtNombre.value}
+    ${txtNombre.value}
+    ${txtApellido1.value}
+    ${txtApellido2.value}
+    ${txtDni.value}`);
+})
+
 let KEY = "TRWAGMYFPDXBNJZSQVHLCKE";
-let documento =  prompt("número documento");
+
 /*pasmos el dato a string con la letra mayuscula*/
 
 /*eL DOCUMENTO  tiene que tener 9 digitos*/

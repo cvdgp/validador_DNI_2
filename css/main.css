@@ -15,10 +15,16 @@ form{
 	display: flex;
 	flex-direction: column;
 	border: 8px rosybrown groove;
-	border-radius: ;
+
 
 }
 
 form > div{
 	margin: 1.5em;
+}
+#Enviar{
+
+	width: 20%;
+	margin: 1.5em auto;	
+
 }
