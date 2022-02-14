@@ -35,44 +35,55 @@ txtDni 			= document.getElementById("dni");
 
 const  KEY = "TRWAGMYFPDXBNJZSQVHLCKE";
 
-
-
+/* Al darle al botón enviar desencadenara a siguientes acciones
+1. Toma los valores de los input tipo texto y los almacena en variables.
+2. Confirmamos datos del documento:
+	a.extraemos el tamaño que ha de ser 9 dígitos
+	b. separamos ultima letra del numero 
+	c. extraemos la primera letra
+3. Forzamos para q la ultima y la primera y la convertimos en string letra sea mayúsculas
+4. Hacemos la prueba para saver si el dígito control es correcto:
+	==> Se divide el numero entre 23 y si el resto coincide con la posición de la letra del 	documento en la lista TRWAGMYFPDXBNJZSQVHLCKE entonces es valido.
+5. Evalúa que primera letra del NIE una de las siguientes: XYZ en tal caso será un NIE en caso contrario es un DNI
+*/
 btnEnviar.addEventListener("click",()=>{
+	/* 1. Toma de datos */
 	let documento = txtDni.value,
 	nombre = txtNombre.value, 
 	primerApellido = txtApelido1.value, 
 	segundoApellido = txtApellido2.value;
-	alert(`estos son los datos del formulario:
-		nombre cl ==>		${nombre}
-		primer Apellido ==>	${primerApellido}
-		segundo Apellido==> ${segundoApellido}
-		DNI==>				${documento}	
-		`);
+
+	/* 2. Tratamiento de DNI o NIE */
+	let DocumentLength = documento.length,
+	lastChart = documento.slice(8,9),
+	numeroDni = parseInt(documento.slice(0,8)),
+	letraInicialNie = documento.slice(0,1),
+	tipodocumento = "DNI";
+
+
+	/* 3. Pasamos a stirng y mayúsculas ultimo y primer char*/
+	lastChart = 		lastChart.toString().toUpperCase();
+	letraInicialNie = 	letraInicialNie.toString().toUpperCase();
+
+	/* 4. Prueba dígito control*/
+	let digitoControl =  (lastChart === KEY.charAt(numeroDni % 23) );
+
+	/* 5. Evaluación si es DNI o NIE*/
+	if(letraInicialNie === "Y" || letraInicialNie === "X"  || letraInicialNie === "Z") 
+				tipodocumento = "NIE";
 }); 
 
 function Validador(){
 
 
 
-	/*pasmos el dato a string con la letra mayuscula*/
 
-	/*eL DOCUMENTO  tiene que tener 9 digitos*/
-	let DocumentLength = documento.length;
-	let lastChart = documento.slice(8,9);
-	let numeroDni = parseInt(documento.slice(0,8));
-	let letraInicialNie = documento.slice(0,1);
-	let tipodocumento = "DNI";
 
-	/*forzamos para q la ultima y la primera y la combertímos en string letra sea mayuscula*/
-	lastChart = 		lastChart.toString().toUpperCase();
-	letraInicialNie = 	letraInicialNie.toString().toUpperCase();
 
-	/*Se divide el numero entre 23 y si el resto coincide con la posicion de la letra del documento en la lista TRWAGMYFPDXBNJZSQVHLCKE entonces es valido */
-	let digitoControl =  (lastChart === KEY.charAt(numeroDni % 23) );
+	
 
-	/*Evalua que primera letra del NIE una de las siguientes: XYZ en tal caso será un NIE en caso contrario es un DNI*/
-	if(letraInicialNie === "Y" || letraInicialNie === "X"  || letraInicialNie === "Z") 
-				tipodocumento = "NIE";
+	
+	
 
 
 
