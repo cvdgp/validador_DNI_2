@@ -23,21 +23,35 @@ Se divide el numero entre 23 y si el resto coincide con la posición de la letra
 
 */
 
+//obtenemos datos desde el formulario
 
-let btnEnviar 		= document.getElementById("Enviar");
-let txtNombre		= document.getElementById("nombre");
-let txtApelido1 	= document.getElementById("apellido1");
-let txtApellido2 	= document.getElementById("apellido2");  
-let txtDni 			= document.getElementById("dni");
+let btnEnviar 	= document.getElementById("Enviar"),
+txtNombre		= document.getElementById("nombre"),
+txtApelido1 	= document.getElementById("apellido1"),
+txtApellido2 	= document.getElementById("apellido2"),  
+txtDni 			= document.getElementById("dni");
+
+// KEY es la clave que utilizamos para comprobar el dígito de control
+
+const  KEY = "TRWAGMYFPDXBNJZSQVHLCKE";
 
 
-btnEnviar.addEventListener("click",function(){
-		alert(`los datos enviado son los siguiente :    Nombre ${txtNombre.value} el apellido primero  es ${txtApelido1.value}`);	
+
+btnEnviar.addEventListener("click",()=>{
+	let documento = txtDni.value,
+	nombre = txtNombre.value, 
+	primerApellido = txtApelido1.value, 
+	segundoApellido = txtApellido2.value;
+	alert(`estos son los datos del formulario:
+		nombre cl ==>		${nombre}
+		primer Apellido ==>	${primerApellido}
+		segundo Apellido==> ${segundoApellido}
+		DNI==>				${documento}	
+		`);
 }); 
 
 function Validador(){
 
-	let  KEY = "TRWAGMYFPDXBNJZSQVHLCKE";
 
 
 	/*pasmos el dato a string con la letra mayuscula*/
