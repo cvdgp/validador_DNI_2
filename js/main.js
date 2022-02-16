@@ -45,6 +45,12 @@ const  KEY = "TRWAGMYFPDXBNJZSQVHLCKE";
 4. Hacemos la prueba para saver si el dígito control es correcto:
 	==> Se divide el numero entre 23 y si el resto coincide con la posición de la letra del 	documento en la lista TRWAGMYFPDXBNJZSQVHLCKE entonces es valido.
 5. Evalúa que primera letra del NIE una de las siguientes: XYZ en tal caso será un NIE en caso contrario es un DNI
+6. Prueba lógica:
+		6.1 En caso de NIE hace la prueba *******
+		6.2 En caso de DNI 
+			6.2.1 confirma que la evaluación del dígito control sea correcta
+			6.2.2 confirma que el tamaño del documento se de 9 dígitos.
+		6.3 Si no es un DNI ni un NIE regresa los errores.
 */
 btnEnviar.addEventListener("click",()=>{
 	/* 1. Toma de datos */
@@ -71,22 +77,26 @@ btnEnviar.addEventListener("click",()=>{
 	/* 5. Evaluación si es DNI o NIE*/
 	if(letraInicialNie === "Y" || letraInicialNie === "X"  || letraInicialNie === "Z") 
 				tipodocumento = "NIE";
+
+	/* 6. Prueba lógica:*/
+	if(tipodocumento === "NIE"){
+		numeroDni = documento.slice(1,7);
+		digitoControl =  (lastChart === KEY.charAt(numeroDni % 23) );
+		alert("NIEEEEEEEEEEE");
+
+	}
+	if(tipodocumento === "DNI" && digitoControl === true  && DocumentLength === 9 ){
+
+	alert("ES un dni correcto")
+	}
+	else{
+		if(digitoControl === false) alert("La letra del documento es incorrecta");
+		if(document != 9) alert("faltan dígitos en su documento, confírmelo usted");
+		
+	}
 }); 
 
 function Validador(){
-
-
-
-
-
-
-	
-
-	
-	
-
-
-
 
 
 
@@ -97,15 +107,6 @@ function Validador(){
 	3. La primera letra del Nie es uno de "XYZ"
 	*/
 
-	if(tipodocumento === "NIE"){
-		numeroDni = documento.slice(1,7);
-		digitoControl =  (lastChart === KEY.charAt(numeroDni % 23) );
-		console.log("NIEEEEEEEEEEE");
-
-	}if(tipodocumento === "DNI" && digitoControl === true  && DocumentLength === 9 ){
-
-	console.log("ES un dni correcto")
-	}
 
 	console.group();
 	console.log("tipo documento  ==>  " + tipodocumento );
