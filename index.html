@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -14,9 +14,10 @@
 		<h1>Validador DNI, NIE Y CIF</h1>
 	</header>
 	<main>
-		<form action="">
+		<form action="get" id="forValidator">
+			<label for=""> <h2>Validador documento</h2></label>
 
-			<div> NOMBRE: 
+			<div> <label for="">NOMBRE:</label> 
 				<input type="text" id="nombre" 	>
 			</div>
 			<div> PRIMER APELLIDO:
@@ -26,9 +27,9 @@
 				<input type="text" id="apellido2" >
 			</div>
 			<div>DOCUMENTO IDENTIDAD:
-				<input type="text" id="docuemnto" placeholder="Documento identidad" >
+				<input type="text" id="dni" placeholder="Documento identidad" >
 			</div>
-
+			<input type="button" id="Enviar" value="Validar">
 		</form>
 	</main>
 	<footer></footer>

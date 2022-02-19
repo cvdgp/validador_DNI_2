@@ -10,15 +10,31 @@ header{
 }
 form{
 
-	margin: 20px;
+	margin: 1.5em auto;
+	width: 50%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	border: 8px rosybrown groove;
-	border-radius: ;
+	border-radius: 0px 0px 0px 15em ;
 
 }
 
 form > div{
 	margin: 1.5em;
+}
+input[type="button"]{
+
+	width: 15%;
+	margin: 1.5em auto;
+	display: 0 auto;
+}
+input{
+	background: darkgrey;
+}
+
+
+input[type="button"]:hover {
+
+	background: red;
 }
